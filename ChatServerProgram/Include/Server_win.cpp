@@ -4,13 +4,71 @@
 #include <io.h>
 #include <string.h>
 #include <winsock2.h>
-
+#include <process.h>
 
 #define CLNT_MAX 10
+#define BUFFSIZE 200
 
 int g_clnt_socks[CLNT_MAX];
 int g_clnt_count = 0;
 
+CRITICAL_SECTION cs;
+
+void send_all_clnt(char* msg, int my_sock)
+{
+	EnterCriticalSection(&cs);
+
+	for (int i = 0; i < g_clnt_count; ++i)
+	{
+		if (g_clnt_socks[i] != my_sock)
+		{
+			printf("send msg : %s", msg);
+			send(g_clnt_socks[i], msg, strlen(msg) + 1, 0);
+		}
+	}
+
+	LeaveCriticalSection(&cs);
+}
+
+unsigned WINAPI clnt_connection(void* arg)
+{
+	int clnt_sock = *(int*)(&arg);
+	int str_len = 0;
+
+	char msg[BUFFSIZE];
+
+	while (1)
+	{
+		str_len = recv(clnt_sock, msg, sizeof(msg) - 1, 0);
+		if (str_len == -1)
+		{
+			printf("%d\n", WSAGetLastError());
+			printf("clnt[%d] close \n", clnt_sock);
+			break;
+		}
+
+		send_all_clnt(msg, clnt_sock);
+		printf("%s\n", msg);
+	}
+
+	EnterCriticalSection(&cs);
+
+	for (int i = 0; i < g_clnt_count; ++i)
+	{
+		if (clnt_sock == g_clnt_socks[i])
+		{
+			for (; i < g_clnt_count - 1; ++i)
+				g_clnt_socks[i] = g_clnt_socks[i + 1];
+			break;
+		}
+	}
+
+	LeaveCriticalSection(&cs);
+
+	closesocket(clnt_sock);
+
+	return 0;
+}
 
 int main(int argc, char* argv[])
 {
@@ -18,16 +76,13 @@ int main(int argc, char* argv[])
 	SOCKET hServSock, hClntSock;
 	SOCKADDR_IN servaddr_in, clntaddr_in;
 	int szClntAddr;
-	char message[] = "Hello World";
 
-	//if (argc != 2)
-	//{
-	//	printf("Usage : %s <port>\n", argv[0]);
-	//	exit(1);
-	//}
 
 	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0)
 		printf("WSAStartUp() error!");
+
+	InitializeCriticalSection(&cs);
+
 
 	// 1번째 인자는 IPv4 프로토콜 체계를 의미
 	// 2번째 인자 SOCK_STREAM은 TCP 소켓 타입을 의미
@@ -41,13 +96,7 @@ int main(int argc, char* argv[])
 	// 네트워크 바이트 순서는 빅 엔디안이 기준이고, 리눅스에선 long이 4바이트이다
 	servaddr_in.sin_addr.s_addr = htonl(INADDR_ANY);
 	// sin_port는 16비트 소켓 Port번호. 네트워크 바이트 순서대로 저장해야 한다는게 중요
-	// argv[1]은 포트 번호
-	
-	if(argc == 2)
-		servaddr_in.sin_port = htons(atoi(argv[1]));
-
-	else
-		servaddr_in.sin_port = htons(7989);
+	servaddr_in.sin_port = htons(7999);
 
 	// bind 함수로 소켓에 주소 할당
 	if (bind(hServSock, (struct sockaddr*)&servaddr_in, sizeof(servaddr_in)) == -1)
@@ -58,7 +107,7 @@ int main(int argc, char* argv[])
 	if (listen(hServSock, 5) == SOCKET_ERROR)
 		printf("listen Error occured! \n");
 
-	char buff[400];
+
 	int recv_len = 0;
 
 	while (1)
@@ -68,25 +117,16 @@ int main(int argc, char* argv[])
 		// accept 호출하고나면 2번째 인자에 클라이언트의 정보가 담겨진다
 		hClntSock = accept(hServSock, (struct sockaddr*)&clntaddr_in, &szClntAddr);
 
-		//g_clnt_socks[g_clnt_count++] = hClntSock;
+		EnterCriticalSection(&cs);
+		g_clnt_socks[g_clnt_count++] = hClntSock;
+		LeaveCriticalSection(&cs);
 
-		recv_len = recv(hClntSock, buff, sizeof(buff), 0);
+		unsigned threadID;
 
-		while (1)
-		{
-			if (recv_len == -1)
-				printf("recv Error occured! \n");
-
-			printf("recv : ");
-
-			for (int i = 0; i < recv_len; ++i)
-			{
-				printf("%02X", (unsigned char)buff[i]);
-			}
-			printf("\n");
-			//Sleep(1);
-		}
+		_beginthreadex(NULL, 0, clnt_connection, (void*)hClntSock, 0, &threadID);
 	}
+
+	DeleteCriticalSection(&cs);
 
 	closesocket(hServSock);
 

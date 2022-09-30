@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\01. IMGUI">
+      <UniqueIdentifier>{7821fe49-4aec-40be-8367-7a179a009df0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. IMGUI\01. Lib">
+      <UniqueIdentifier>{e9049dfd-5ed4-4e8c-a4ce-3adc3b9eb5fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Math">
+      <UniqueIdentifier>{6faccfd6-a5f4-4eeb-becb-cfbda082be98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. IMGUI\02. Window">
+      <UniqueIdentifier>{85b97d23-1d7f-44b7-b010-1fddac4912f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. IMGUI\03. Widget">
+      <UniqueIdentifier>{2085dc0a-5dff-413c-aee2-6295b8cbd4ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. IMGUI\04. Manager">
+      <UniqueIdentifier>{0f6f9d06-0e4c-4153-ae37-b2c35f4e5525}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Timer">
+      <UniqueIdentifier>{ec8985a9-ae83-4247-901d-c40dfa79bfd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04. ClientWindow">
+      <UniqueIdentifier>{c8bd9c1c-ddb0-496c-a3a2-318ea6f5f353}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\05. Path">
+      <UniqueIdentifier>{00673b98-206f-4880-93ac-6deaf1ddd7d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06. Engine">
+      <UniqueIdentifier>{ac0fd35f-63d1-4e6d-911f-ae453589ce8f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="IMGUI\imconfig.h">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\ImCurveEdit.h">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\ImGradient.h">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imgui.h">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imgui_impl_win32.h">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imgui_internal.h">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\ImSequencer.h">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imstb_rectpack.h">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imstb_textedit.h">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imstb_truetype.h">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\IMGUIWindow.h">
+      <Filter>소스 파일\01. IMGUI\02. Window</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\IMGUIWidget.h">
+      <Filter>소스 파일\01. IMGUI\03. Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\IMGUIListBox.h">
+      <Filter>소스 파일\01. IMGUI\03. Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\IMGUIManager.h">
+      <Filter>소스 파일\01. IMGUI\04. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineMath.h">
+      <Filter>소스 파일\02. Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>소스 파일\02. Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>소스 파일\02. Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4.h">
+      <Filter>소스 파일\02. Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>소스 파일\03. Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\ClientWindow.h">
+      <Filter>소스 파일\04. ClientWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientManager.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="GameInfo.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="PathManager.h">
+      <Filter>소스 파일\05. Path</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Engine.h">
+      <Filter>소스 파일\06. Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Device.h">
+      <Filter>소스 파일\06. Engine</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="IMGUI\ImCurveEdit.cpp">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\ImGradient.cpp">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imgui.cpp">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imgui_demo.cpp">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imgui_draw.cpp">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imgui_impl_win32.cpp">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imgui_tables.cpp">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imgui_widgets.cpp">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\IMGUIWindow.cpp">
+      <Filter>소스 파일\01. IMGUI\02. Window</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\IMGUIWidget.cpp">
+      <Filter>소스 파일\01. IMGUI\03. Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\IMGUIListBox.cpp">
+      <Filter>소스 파일\01. IMGUI\04. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\IMGUIManager.cpp">
+      <Filter>소스 파일\01. IMGUI\04. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>소스 파일\02. Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3.cpp">
+      <Filter>소스 파일\02. Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector4.cpp">
+      <Filter>소스 파일\02. Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>소스 파일\03. Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\ClientWindow.cpp">
+      <Filter>소스 파일\04. ClientWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="PathManager.cpp">
+      <Filter>소스 파일\05. Path</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Engine.cpp">
+      <Filter>소스 파일\06. Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Device.cpp">
+      <Filter>소스 파일\06. Engine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ChatClientProgram.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
