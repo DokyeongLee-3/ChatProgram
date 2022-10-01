@@ -12,6 +12,7 @@
 #include <d2d1.h>
 
 #include "IMGUI/imgui.h"
+#include "IMGUI/imgui_impl_dx11.h"
 #include "IMGUI/imgui_impl_win32.h"
 #include "Vector2.h"
 #include "Vector3.h"

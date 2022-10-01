@@ -12,6 +12,7 @@ private:
 	static bool	m_Loop;
 	class CTimer* m_Timer;
 	bool		m_Start;
+	float		m_ClearColor[4];
 
 public:
 	HWND GetWindowHandle()	const
@@ -41,10 +42,10 @@ public:
 
 public:
 	bool Init(HINSTANCE hInst, const TCHAR* Name, unsigned int Width,
-		unsigned int Height, int IconID,
+		unsigned int Height, int IconID, char* ID,
 		bool WindowMode = true);
 	bool Init(HINSTANCE hInst, HWND hWnd, unsigned int Width,
-		unsigned int Height, bool WindowMode = true);
+		unsigned int Height, char* ID, bool WindowMode = true);
 	int Run();
 	void Logic();
 

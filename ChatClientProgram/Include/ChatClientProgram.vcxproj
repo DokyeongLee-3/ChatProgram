@@ -33,6 +33,7 @@
     <ClInclude Include="IMGUI\IMGUIManager.h" />
     <ClInclude Include="IMGUI\IMGUIWidget.h" />
     <ClInclude Include="IMGUI\IMGUIWindow.h" />
+    <ClInclude Include="IMGUI\imgui_impl_dx11.h" />
     <ClInclude Include="IMGUI\imgui_impl_win32.h" />
     <ClInclude Include="IMGUI\imgui_internal.h" />
     <ClInclude Include="IMGUI\ImSequencer.h" />
@@ -60,6 +61,7 @@
     <ClCompile Include="IMGUI\IMGUIWindow.cpp" />
     <ClCompile Include="IMGUI\imgui_demo.cpp" />
     <ClCompile Include="IMGUI\imgui_draw.cpp" />
+    <ClCompile Include="IMGUI\imgui_impl_dx11.cpp" />
     <ClCompile Include="IMGUI\imgui_impl_win32.cpp" />
     <ClCompile Include="IMGUI\imgui_tables.cpp" />
     <ClCompile Include="IMGUI\imgui_widgets.cpp" />

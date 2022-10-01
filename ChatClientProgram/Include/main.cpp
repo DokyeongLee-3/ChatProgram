@@ -58,7 +58,7 @@ int main(int argc, char* argv[])
 
 	HINSTANCE hInstance = GetModuleHandle(NULL);
 	
-	CEngine::GetInst()->Init(hInstance, TEXT("ChatProgram"), 1280, 720, IDI_ICON1);
+	CEngine::GetInst()->Init(hInstance, TEXT("ChatProgram"), 1280, 720, IDI_ICON1, ID);
 
 	CEngine::GetInst()->Run();
 

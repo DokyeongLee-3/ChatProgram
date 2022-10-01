@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include "Device.h"
 #include "../IMGUI/IMGUIManager.h"
+#include "../ClientManager.h"
 #include "../PathManager.h"
 
 #include <time.h>
@@ -10,6 +11,7 @@ DEFINITION_SINGLE(CEngine)
 bool CEngine::m_Loop = true;
 
 CEngine::CEngine()	:
+	m_ClearColor{},
 	m_Timer(nullptr),
 	m_Start(false)
 {
@@ -28,7 +30,7 @@ CEngine::~CEngine()
 
 
 bool CEngine::Init(HINSTANCE hInst, const TCHAR* Name, unsigned int Width,
-	unsigned int Height, int IconID, bool WindowMode)
+	unsigned int Height, int IconID, char* ID, bool WindowMode)
 {
 	m_hInst = hInst;
 
@@ -38,11 +40,11 @@ bool CEngine::Init(HINSTANCE hInst, const TCHAR* Name, unsigned int Width,
 	Register(Name, IconID);
 	Create(Name);
 
-	return Init(hInst, m_hWnd, Width, Height, WindowMode);
+	return Init(hInst, m_hWnd, Width, Height, ID, WindowMode);
 }
 
 bool CEngine::Init(HINSTANCE hInst, HWND hWnd,
-	unsigned int Width, unsigned int Height, bool WindowMode)
+	unsigned int Width, unsigned int Height, char* ID, bool WindowMode)
 {
 	m_hInst = hInst;
 	m_hWnd = hWnd;
@@ -60,6 +62,9 @@ bool CEngine::Init(HINSTANCE hInst, HWND hWnd,
 		return false;
 
 	if (!CIMGUIManager::GetInst()->Init())
+		return false;
+
+	if (!CClientManager::GetInst()->Init(ID))
 		return false;
 
 	return true;
@@ -97,6 +102,8 @@ int CEngine::Run()
 		}
 	}
 
+	DestroyInst();
+
 	return (int)msg.wParam;
 }
 
@@ -106,22 +113,27 @@ void CEngine::Logic()
 
 	float	DeltaTime = m_Timer->GetDeltaTime();
 
-	
-	CIMGUIManager::GetInst()->Update(DeltaTime);
+	Update(DeltaTime);
+
+	Render(DeltaTime);
 }
 
 bool CEngine::Update(float DeltaTime)
 {
-	return false;
+	CIMGUIManager::GetInst()->Update(DeltaTime);
+
+	return true;
 }
 
 bool CEngine::Render(float DeltaTime)
 {
-	//CDevice::GetInst()->RenderStart();
-	//CDevice::GetInst()->ClearRenderTarget(m_ClearColor);
-	//CDevice::GetInst()->ClearDepthStencil(1.f, 0);
+	CDevice::GetInst()->RenderStart();
+	CDevice::GetInst()->ClearRenderTarget(m_ClearColor);
+	CDevice::GetInst()->ClearDepthStencil(1.f, 0);
 
 	CIMGUIManager::GetInst()->Render();
+
+	CDevice::GetInst()->Flip();
 
 	return true;
 }

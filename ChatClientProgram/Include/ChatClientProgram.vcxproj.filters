@@ -123,6 +123,9 @@
     <ClInclude Include="Engine\Device.h">
       <Filter>소스 파일\06. Engine</Filter>
     </ClInclude>
+    <ClInclude Include="IMGUI\imgui_impl_dx11.h">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IMGUI\ImCurveEdit.cpp">
@@ -190,6 +193,9 @@
     </ClCompile>
     <ClCompile Include="Engine\Device.cpp">
       <Filter>소스 파일\06. Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\imgui_impl_dx11.cpp">
+      <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

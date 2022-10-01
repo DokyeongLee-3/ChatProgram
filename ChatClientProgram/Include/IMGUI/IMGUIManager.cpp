@@ -2,6 +2,8 @@
 #include "IMGUIManager.h"
 #include "IMGUIWindow.h"
 #include "../PathManager.h"
+#include "../Engine/Device.h"
+#include "../Engine/Engine.h"
 
 DEFINITION_SINGLE(CIMGUIManager)
 
@@ -20,6 +22,7 @@ CIMGUIManager::~CIMGUIManager()
 		SAFE_DELETE(iter->second);
 	}
 
+	ImGui_ImplDX11_Shutdown();
 	ImGui_ImplWin32_Shutdown();
 	ImGui::DestroyContext();
 }
@@ -36,10 +39,7 @@ CIMGUITree* CIMGUIManager::GetStagingTree() const
 
 bool CIMGUIManager::Init()
 {
-	char pszOldWindowTitle[1024];
-	GetConsoleTitleA(pszOldWindowTitle, 1024);
-	m_hWnd = FindWindowA(NULL, pszOldWindowTitle);
-
+	m_hWnd = CEngine::GetInst()->GetWindowHandle();
 	m_Context = ImGui::CreateContext();
 
 	ImGuiIO& io = ImGui::GetIO();
@@ -47,12 +47,13 @@ bool CIMGUIManager::Init()
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
-	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+	io.ConfigFlags &= ~ImGuiConfigFlags_ViewportsEnable;
 
 	ImGui::StyleColorsDark();
 
 	// BackEnd Setup
 	ImGui_ImplWin32_Init(m_hWnd);
+	ImGui_ImplDX11_Init(CDevice::GetInst()->GetDevice(), CDevice::GetInst()->GetContext());
 
 	AddFont("Default", "NotoSansKR-Regular.otf", 15.f, true);
 	AddFont("DefaultBlack", "NotoSansKR-Black.otf", 15.f, true);
@@ -65,6 +66,7 @@ bool CIMGUIManager::Init()
 
 void CIMGUIManager::Update(float DeltaTime)
 {
+	ImGui_ImplDX11_NewFrame();
 	ImGui_ImplWin32_NewFrame();
 
 	ImGui::NewFrame();
@@ -93,6 +95,8 @@ void CIMGUIManager::Render()
 {
 	if (m_mapWindow.empty())
 		return;
+
+	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
 	ImGuiIO& io = ImGui::GetIO();
 
