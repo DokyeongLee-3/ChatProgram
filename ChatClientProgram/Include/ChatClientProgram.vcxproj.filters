@@ -126,6 +126,15 @@
     <ClInclude Include="IMGUI\imgui_impl_dx11.h">
       <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
     </ClInclude>
+    <ClInclude Include="IMGUI\IMGUITextInput.h">
+      <Filter>소스 파일\01. IMGUI\03. Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\IMGUISeperator.h">
+      <Filter>소스 파일\01. IMGUI\03. Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\IMGUIChatBox.h">
+      <Filter>소스 파일\01. IMGUI\03. Widget</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IMGUI\ImCurveEdit.cpp">
@@ -157,9 +166,6 @@
     </ClCompile>
     <ClCompile Include="IMGUI\IMGUIWidget.cpp">
       <Filter>소스 파일\01. IMGUI\03. Widget</Filter>
-    </ClCompile>
-    <ClCompile Include="IMGUI\IMGUIListBox.cpp">
-      <Filter>소스 파일\01. IMGUI\04. Manager</Filter>
     </ClCompile>
     <ClCompile Include="IMGUI\IMGUIManager.cpp">
       <Filter>소스 파일\01. IMGUI\04. Manager</Filter>
@@ -196,6 +202,18 @@
     </ClCompile>
     <ClCompile Include="IMGUI\imgui_impl_dx11.cpp">
       <Filter>소스 파일\01. IMGUI\01. Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\IMGUITextInput.cpp">
+      <Filter>소스 파일\01. IMGUI\03. Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\IMGUIListBox.cpp">
+      <Filter>소스 파일\01. IMGUI\03. Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\IMGUISeperator.cpp">
+      <Filter>소스 파일\01. IMGUI\03. Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGUI\IMGUIChatBox.cpp">
+      <Filter>소스 파일\01. IMGUI\03. Widget</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

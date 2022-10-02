@@ -16276,6 +16276,8 @@ void ImGui::BeginDocked(ImGuiWindow* window, bool* p_open)
 void ImGui::BeginDockableDragDropSource(ImGuiWindow* window)
 {
     ImGuiContext& g = *GImGui;
+    // TextInput Focus 문제로 추가한 코드
+    g.ActiveId = window->MoveId;
     IM_ASSERT(g.ActiveId == window->MoveId);
     IM_ASSERT(g.MovingWindow == window);
     IM_ASSERT(g.CurrentWindow == window);

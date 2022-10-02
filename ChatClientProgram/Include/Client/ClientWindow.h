@@ -2,6 +2,7 @@
 
 #include "../IMGUI/IMGUIWindow.h"
 
+
 class CClientWindow :
     public CIMGUIWindow
 {
@@ -14,5 +15,9 @@ public:
 public:
     virtual bool Init();
     virtual void Update(float DeltaTime);
+
+public:
+    void SendClientToServ(char* Chat);
+    void StackChatLog(char* Chat);
 };
 

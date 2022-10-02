@@ -29,8 +29,11 @@
     <ClInclude Include="IMGUI\ImCurveEdit.h" />
     <ClInclude Include="IMGUI\ImGradient.h" />
     <ClInclude Include="IMGUI\imgui.h" />
+    <ClInclude Include="IMGUI\IMGUIChatBox.h" />
     <ClInclude Include="IMGUI\IMGUIListBox.h" />
     <ClInclude Include="IMGUI\IMGUIManager.h" />
+    <ClInclude Include="IMGUI\IMGUISeperator.h" />
+    <ClInclude Include="IMGUI\IMGUITextInput.h" />
     <ClInclude Include="IMGUI\IMGUIWidget.h" />
     <ClInclude Include="IMGUI\IMGUIWindow.h" />
     <ClInclude Include="IMGUI\imgui_impl_dx11.h" />
@@ -55,8 +58,11 @@
     <ClCompile Include="IMGUI\ImCurveEdit.cpp" />
     <ClCompile Include="IMGUI\ImGradient.cpp" />
     <ClCompile Include="IMGUI\imgui.cpp" />
+    <ClCompile Include="IMGUI\IMGUIChatBox.cpp" />
     <ClCompile Include="IMGUI\IMGUIListBox.cpp" />
     <ClCompile Include="IMGUI\IMGUIManager.cpp" />
+    <ClCompile Include="IMGUI\IMGUISeperator.cpp" />
+    <ClCompile Include="IMGUI\IMGUITextInput.cpp" />
     <ClCompile Include="IMGUI\IMGUIWidget.cpp" />
     <ClCompile Include="IMGUI\IMGUIWindow.cpp" />
     <ClCompile Include="IMGUI\imgui_demo.cpp" />

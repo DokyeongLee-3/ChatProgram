@@ -23,7 +23,7 @@ public:
 
 private:
 	static unsigned int __stdcall rcv(void* arg);
-	static unsigned int __stdcall ClientChatThread(void* arg);
+	//static unsigned int __stdcall ClientChatThread(void* arg);
 
 
 	DECLARE_SINGLE(CClientManager)

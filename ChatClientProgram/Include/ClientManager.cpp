@@ -63,7 +63,7 @@ bool CClientManager::Init(char* ID)
 
 
 	// Client의 채팅 입력을 받아서 서버로 뿌리는 쓰레드 생성
-	CreateInputThread();
+	//CreateInputThread();
 
 	// Client용 IMGUI Window 생성
 	CreateClientChatWindow();
@@ -79,11 +79,6 @@ int CClientManager::Run()
 void CClientManager::CreateClientChatWindow()
 {
 	CIMGUIManager::GetInst()->AddWindow<CClientWindow>("ClientChatWindow");
-}
-
-void CClientManager::CreateInputThread()
-{
-	_beginthreadex(NULL, 0, CClientManager::ClientChatThread, (void*)m_ID, 0, nullptr);
 }
 
 
@@ -108,28 +103,21 @@ unsigned int __stdcall CClientManager::rcv(void* arg)
 	return 0;
 }
 
-unsigned int __stdcall CClientManager::ClientChatThread(void* arg)
-{
-	WSADATA wsaData; 
-	WSAStartup(MAKEWORD(2,2), &wsaData);
-
-	char chat[200];
-	char msg[200];
-
-	while (1)
-	{
-		fgets(chat, sizeof(chat), stdin);
-
-		sprintf(msg, "[%s] : %s", m_ID, chat);
-
-		printf("%s", msg);
-		send(m_Socket, msg, (int)(strlen(msg) + 1), 0);
-		Sleep(DWORD(0.4f));
-	}
-
-	closesocket(m_Socket);
-
-	WSACleanup();
-
-	return 0;
-}
+//unsigned int __stdcall CClientManager::ClientChatThread(void* arg)
+//{
+//	char chat[200];
+//	char msg[200];
+//
+//	while (1)
+//	{
+//		fgets(chat, sizeof(chat), stdin);
+//
+//		sprintf(msg, "[%s] : %s", m_ID, chat);
+//
+//		printf("%s", msg);
+//		send(m_Socket, msg, (int)(strlen(msg) + 1), 0);
+//		Sleep(DWORD(0.4f));
+//	}
+//
+//	return 0;
+//}
