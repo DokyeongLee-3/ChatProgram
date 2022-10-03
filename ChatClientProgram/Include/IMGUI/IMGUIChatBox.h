@@ -301,6 +301,12 @@ private:
     ExampleAppConsole m_ChatBox;
 
 public:
+    void AddItem(char* Chat)
+    {
+        m_ChatBox.Items.push_back(Chat);
+    }
+
+public:
     ExampleAppConsole& GetChatBoxConsole()
     {
         return m_ChatBox;

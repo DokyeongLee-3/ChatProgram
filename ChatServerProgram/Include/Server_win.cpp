@@ -23,7 +23,9 @@ void send_all_clnt(char* msg, int my_sock)
 		if (g_clnt_socks[i] != my_sock)
 		{
 			printf("send msg : %s", msg);
-			send(g_clnt_socks[i], msg, strlen(msg) + 1, 0);
+			int result = send(g_clnt_socks[i], msg, strlen(msg) + 1, 0);
+
+			int a = 3;
 		}
 	}
 

@@ -54,7 +54,9 @@ void echooff(FILE* f)
 int main(int argc, char* argv[])
 {
 	char ID[100];
-	strcpy(ID, argv[1]);
+
+	printf("Enter Your Name : ");
+	scanf_s("%s", ID, sizeof(ID));
 
 	HINSTANCE hInstance = GetModuleHandle(NULL);
 	

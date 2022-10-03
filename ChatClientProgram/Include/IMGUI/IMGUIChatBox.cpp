@@ -19,8 +19,9 @@ void CIMGUIChatBox::Render()
 {
     const float footer_height_to_reserve = ImGui::GetStyle().ItemSpacing.y + ImGui::GetFrameHeightWithSpacing();
 
-    ImGui::BeginChild("ScrollingRegion", ImVec2(0, -footer_height_to_reserve), false, ImGuiWindowFlags_HorizontalScrollbar | ImGuiWindowFlags_NoDocking);
+    ImGui::BeginChild("ScrollingRegion", ImVec2(0.f, 400.f), false, ImGuiWindowFlags_HorizontalScrollbar);
 
+    ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(4, 1)); // Tighten spacing
     for (int i = 0; i < m_ChatBox.Items.Size; i++)
     {
         const char* item = m_ChatBox.Items[i];
@@ -37,8 +38,10 @@ void CIMGUIChatBox::Render()
         //    ImGui::PopStyleColor();
     }
 
-	/*bool Open = false;
-	m_ChatBox.Draw("ClientChatBox", &Open);*/
+	//bool Open = false;
+	//m_ChatBox.Draw("ClientChatBox", &Open);
 
+
+    ImGui::PopStyleVar();
     ImGui::EndChild();
 }

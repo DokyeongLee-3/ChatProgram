@@ -20,13 +20,12 @@ bool CClientWindow::Init()
 
 	AddWidget<CIMGUISeperator>("Separator1");
 
-
-
 	AddWidget<CIMGUIChatBox>("ChatBox");
 
 	AddWidget<CIMGUISeperator>("Separator2");
 
-	CIMGUITextInput* Input = AddWidget<CIMGUITextInput>("ChatInput", 300.f, 100.f);
+	CIMGUITextInput* Input = AddWidget<CIMGUITextInput>("ChatInput", 400.f, 80.f);
+	Input->SetSize(400.f, 150.f);
 	Input->SetHideName(true);
 	Input->AddFlag(ImGuiInputTextFlags_::ImGuiInputTextFlags_EnterReturnsTrue);
 	Input->AddCallback<CClientWindow>(this, &CClientWindow::SendClientToServ);

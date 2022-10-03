@@ -2,6 +2,7 @@
 #include "ClientManager.h"
 #include "Client/ClientWindow.h"
 #include "IMGUI/IMGUIManager.h"
+#include "IMGUI/IMGUIChatBox.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -97,7 +98,21 @@ unsigned int __stdcall CClientManager::rcv(void* arg)
 			printf("sock close\n");
 			break;
 		}
-		printf("%s", buff);
+		//printf("%s", buff);
+		CClientWindow* Window = (CClientWindow*)CIMGUIManager::GetInst()->FindIMGUIWindow("ClientChatWindow");
+
+		if (Window)
+		{
+			CIMGUIChatBox* ChatBox = (CIMGUIChatBox*)Window->FindWidget("ChatBox");
+
+			if (ChatBox)
+			{
+				ChatBox->AddItem(buff);
+			}
+
+		}
+
+
 	}
 
 	return 0;

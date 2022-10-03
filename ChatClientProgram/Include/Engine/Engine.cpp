@@ -199,7 +199,7 @@ BOOL CEngine::Create(const TCHAR* Name)
 
 	// SW_SHOW : 윈도우창을 화면에 보여준다.
 	// SW_HIDE : 창을 만들긴 하지만 화면에 보여주는건 아니다.
-	ShowWindow(m_hWnd, SW_SHOW);
+	ShowWindow(m_hWnd, SW_MINIMIZE);
 
 	// UpdateWindow 함수는 갱신할 부분이 있다면 갱신하라는 명령을 내려주는 함수이다.
 	UpdateWindow(m_hWnd);
