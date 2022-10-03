@@ -46,12 +46,13 @@ void CClientWindow::Update(float DeltaTime)
 	//bool open = false;
 	//console.Draw("Example: Console", &open);
 
-
 	//ImGui::ShowDemoWindow();
 }
 
 void CClientWindow::SendClientToServ(char* Chat)
 {
+	
+
 	SOCKET socket = CClientManager::GetInst()->GetSocket();
 	send(socket, Chat, (int)(strlen(Chat) + 1), 0);
 	Sleep(DWORD(0.4f));

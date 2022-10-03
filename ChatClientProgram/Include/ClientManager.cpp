@@ -79,7 +79,9 @@ int CClientManager::Run()
 
 void CClientManager::CreateClientChatWindow()
 {
-	CIMGUIManager::GetInst()->AddWindow<CClientWindow>("ClientChatWindow");
+	CClientWindow* Window = CIMGUIManager::GetInst()->AddWindow<CClientWindow>("ClientChatWindow");
+
+	Window->SetID(m_ID);
 }
 
 
@@ -98,6 +100,7 @@ unsigned int __stdcall CClientManager::rcv(void* arg)
 			printf("sock close\n");
 			break;
 		}
+
 		//printf("%s", buff);
 		CClientWindow* Window = (CClientWindow*)CIMGUIManager::GetInst()->FindIMGUIWindow("ClientChatWindow");
 
@@ -107,11 +110,16 @@ unsigned int __stdcall CClientManager::rcv(void* arg)
 
 			if (ChatBox)
 			{
-				ChatBox->AddItem(buff);
+				char* NewBuf = new char[1000];
+				memset(NewBuf, 0, 1000);
+				strcat_s(NewBuf, 1000, "[");
+				strcat_s(NewBuf, 1000, m_ID);
+				strcat_s(NewBuf, 1000, "] : ");
+				strcat_s(NewBuf, 1000, buff);
+				
+				ChatBox->AddItem(NewBuf);
 			}
-
 		}
-
 
 	}
 
