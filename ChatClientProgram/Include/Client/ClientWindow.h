@@ -24,6 +24,11 @@ public:
         strcpy_s(m_ID, sizeof(m_ID), ID);
     }
 
+    char* GetID()
+    {
+        return m_ID;
+    }
+
 public:
     void SendClientToServ(char* Chat);
     void StackChatLog(char* Chat);

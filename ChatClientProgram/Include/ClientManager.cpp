@@ -110,13 +110,13 @@ unsigned int __stdcall CClientManager::rcv(void* arg)
 
 			if (ChatBox)
 			{
-				char* NewBuf = new char[1000];
-				memset(NewBuf, 0, 1000);
-				strcat_s(NewBuf, 1000, "[");
-				strcat_s(NewBuf, 1000, m_ID);
-				strcat_s(NewBuf, 1000, "] : ");
-				strcat_s(NewBuf, 1000, buff);
-				
+				char* NewBuf = new char[500];
+				//memset(NewBuf, 0, 1000);
+				//strcat_s(NewBuf, 1000, "[");
+				//strcat_s(NewBuf, 1000, m_ID);
+				//strcat_s(NewBuf, 1000, "] : ");
+				//strcat_s(NewBuf, 1000, buff);
+				strcpy_s(NewBuf, 500, buff);
 				ChatBox->AddItem(NewBuf);
 			}
 		}

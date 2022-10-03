@@ -51,10 +51,14 @@ void CClientWindow::Update(float DeltaTime)
 
 void CClientWindow::SendClientToServ(char* Chat)
 {
-	
-
 	SOCKET socket = CClientManager::GetInst()->GetSocket();
-	send(socket, Chat, (int)(strlen(Chat) + 1), 0);
+	char* NewBuf = new char[1000];
+	memset(NewBuf, 0, 1000);
+	strcat_s(NewBuf, 1000, "[");
+	strcat_s(NewBuf, 1000, m_ID);
+	strcat_s(NewBuf, 1000, "] : ");
+	strcat_s(NewBuf, 1000, Chat);
+	send(socket, NewBuf, (int)(strlen(NewBuf) + 1), 0);
 	Sleep(DWORD(0.4f));
 }
 
@@ -64,9 +68,10 @@ void CClientWindow::StackChatLog(char* Chat)
 
 	if (Box)
 	{
-		char AddMe[1024];
+		char* AddMe = new char[1000];
 		strcpy_s(AddMe, 1024, "[Me] : ");
 		strcat(AddMe, Chat);
+
 
 		Box->GetChatBoxConsole().AddLog(AddMe);
 	}

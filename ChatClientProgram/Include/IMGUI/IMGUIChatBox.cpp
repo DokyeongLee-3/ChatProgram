@@ -1,6 +1,7 @@
 
 #include "IMGUIChatBox.h"
 #include "imgui_internal.h"
+#include "../Client/ClientWindow.h"
 
 CIMGUIChatBox::CIMGUIChatBox()
 {
@@ -17,9 +18,17 @@ bool CIMGUIChatBox::Init()
 
 void CIMGUIChatBox::Render()
 {
+
+    char* ID = ((CClientWindow*)m_Owner)->GetID();
+
+
+    ImGui::TextUnformatted(ID);
+
+    ImGui::Separator();
+
     const float footer_height_to_reserve = ImGui::GetStyle().ItemSpacing.y + ImGui::GetFrameHeightWithSpacing();
 
-    ImGui::BeginChild("ScrollingRegion", ImVec2(0.f, 400.f), false, ImGuiWindowFlags_HorizontalScrollbar);
+    ImGui::BeginChild("ScrollingRegion", ImVec2(0.f, 350.f), false, ImGuiWindowFlags_HorizontalScrollbar);
 
     ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(4, 1)); // Tighten spacing
     for (int i = 0; i < m_ChatBox.Items.Size; i++)
